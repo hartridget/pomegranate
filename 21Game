@@ -1,0 +1,47 @@
+import time
+import random
+end_value = 0
+def p1(end_value):
+    try:
+        while end_value < 21:
+            player1_number = int(input("Choose a number between 1-3 :"))
+            if player1_number < 4:
+                end_value = end_value + player1_number
+                print("The current value is {}".format(end_value))
+                print("Next person...")
+                p1(end_value)
+            elif player1_number > 3:
+                print("You cannot enter a value greater than 3.")
+                print("Try again.")
+                p1(end_value)
+            else:
+                print("Stop trying to break the game!")
+                p1(end_value)
+            if end_value > 20:
+                print("Game end!")
+                play()
+    except:
+        print("Stop trying to break the game!")
+        p1(end_value)
+
+def play():
+    try:
+        play_again = int(input("Do you wish to play again? yes(1) no(2) :"))
+        if play_again == 1:
+            print("Restarting...")
+            p1()
+        elif play_again == 2:
+            print("Ok, exiting game.")
+            exit()
+        elif play_again > 2:
+            print("You cannot enter a value greater than 2.")
+            print("Try again.")
+            play()
+        else:
+            print("Stop trying to break the game!")
+            play()
+    except:
+        print("Stop trying to break the game!")
+        play()
+
+p1(end_value)
