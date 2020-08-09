@@ -3,27 +3,23 @@ import sys
 import random
 end_value = 0
 def player1(end_value):
-    try:
-        while end_value < 21:
+    while end_value < 21:
+        try:
             player1_number = int(input("Choose a number between 1-3 :"))
             if player1_number < 4:
                 end_value = end_value + player1_number
                 print("The current value is {}".format(end_value))
                 print("Next person...")
                 player1(end_value)
-            elif player1_number > 3:
-                print("You cannot enter a value greater than 3.")
-                print("Try again.")
-                player1(end_value)
             else:
-                print("Stop trying to break the game!")
+                print("1Stop trying to break the game!")
                 player1(end_value)
-            if end_value > 20:
+        except:
+            print("2Stop trying to break the game!")
+            player1(end_value)
+    if end_value > 20:
                 print("Game end!")
                 playagain(end_value)
-    except:
-        print("Stop trying to break the game!")
-        player1(end_value)
 
 def playagain(end_value):
     end_value = 0
@@ -36,10 +32,10 @@ def playagain(end_value):
             print("Ok, exiting game.")
             quit()
         else:
-            print("Stop trying to break the game!")
-            playagain(end_value)
+            print("3Stop trying to break the game!")
+            playagain()
     except:
-        '''print("Stop trying to break the game!")
-        playagain(end_value)'''
+        print("4Stop trying to break the game!")
+        play_again()
 
 player1(end_value)
