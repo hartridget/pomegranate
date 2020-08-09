@@ -1,7 +1,5 @@
 import time
 import random
-
-#Comment
 end_value = 0
 def player1(end_value):
     try:
@@ -11,39 +9,36 @@ def player1(end_value):
                 end_value = end_value + player1_number
                 print("The current value is {}".format(end_value))
                 print("Next person...")
-                p1(end_value)
+                player1(end_value)
             elif player1_number > 3:
                 print("You cannot enter a value greater than 3.")
                 print("Try again.")
-                p1(end_value)
+                player1(end_value)
             else:
                 print("Stop trying to break the game!")
-                p1(end_value)
+                player1(end_value)
             if end_value > 20:
                 print("Game end!")
-                play()
+                playagain(end_value)
     except:
         print("Stop trying to break the game!")
-        p1(end_value)
+        player1(end_value)
 
-def playagain():
+def playagain(end_value):
+    end_value = 0
     try:
         play_again = int(input("Do you wish to play again? yes(1) no(2) :"))
         if play_again == 1:
             print("Restarting...")
-            p1()
+            player1(end_value)
         elif play_again == 2:
             print("Ok, exiting game.")
-            exit()
-        elif play_again > 2:
-            print("You cannot enter a value greater than 2.")
-            print("Try again.")
-            play()
+            quit()
         else:
             print("Stop trying to break the game!")
-            play()
+            playagain(end_value)
     except:
         print("Stop trying to break the game!")
-        play()
+        playagain(end_value)
 
 player1(end_value)
