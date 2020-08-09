@@ -1,4 +1,5 @@
 import time
+import sys
 import random
 end_value = 0
 def player1(end_value):
@@ -38,7 +39,7 @@ def playagain(end_value):
             print("Stop trying to break the game!")
             playagain(end_value)
     except:
-        print("Stop trying to break the game!")
-        playagain(end_value)
+        '''print("Stop trying to break the game!")
+        playagain(end_value)'''
 
 player1(end_value)
