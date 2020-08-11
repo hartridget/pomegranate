@@ -14,9 +14,9 @@ def player1(end_value):
             else:
                 print("1Stop trying to break the game!")
                 player1(end_value)
-        except:
+        '''except:
             print("2Stop trying to break the game!")
-            player1(end_value)
+            player1(end_value)'''
     if end_value > 20:
                 print("Game end!")
                 playagain(end_value)
@@ -31,6 +31,7 @@ def playagain(end_value):
         elif play_again == 2:
             print("Ok, exiting game.")
             quit()
+
         else:
             print("3Stop trying to break the game!")
             playagain()
