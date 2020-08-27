@@ -1,32 +1,42 @@
 import time
 import sys
 import random
-end_value = 0
+
+def restart():
+    end_value = 0
+    player1(end_value)
+
+
 def player1(end_value):
     #Test cheat
-    Test = int(input("1 to play 2 to skip"))
-    if Test == 2:
-        play(end_value)
     while end_value < 21:
-        try:
-            player1_number = int(input("Choose a number between 1-3 :"))
-            if player1_number < 4:
-                end_value = end_value + player1_number
-                print("The current value is {}".format(end_value))
-                print("Next person...")
-                player1(end_value)
-            else:
-                print("1Stop trying to break the game!")
-                player1(end_value)
-        except TypeError:
-            print("2Stop trying to break the game!")
+        player2(end_value)
+
+
+def player2(end_value):
+    try:
+        player1_number = int(input("Choose a number between 1-3 :"))
+        if player1_number < 4:
+            end_value = end_value + player1_number
+            print("The current value is {}".format(end_value))
+            print("Next person...")
+            end_value_check(end_value)
+        else:
+            print("1Stop trying to break the game!")
             player1(end_value)
-        except:
-            print("Stop trying to break the game!")
-            player1(end_value)
+    except TypeError:
+        print("2Stop trying to break the game!")
+        player1(end_value)
+    except:
+        print("Stop trying to break the game!")
+        player1(end_value)
+
+def end_value_check(end_value):
     if end_value > 20:
         print("Game end!")
         play(end_value)
+    else:
+        player1(end_value)
 
 
 def play(end_value):
@@ -34,19 +44,19 @@ def play(end_value):
         play_again = int(input("Do you wish to play again? yes(1) no(2) :"))
         if play_again == 1:
             print("Restarting...")
-            player1(end_value)
+            restart()
         elif play_again == 2:
             print("Ok, exiting game.")
             exit()
         else:
             print("3Stop trying to break the game!")
             play(end_value)
-    #except TypeError:
-        #print("4Stop trying to break the game!")
-        #play(end_value)
-    except:
-        print("Stop trying to break the game!")
+    except TypeError:
+        print("4Stop trying to break the game!")
         play(end_value)
+    #except:
+        #print("Stop trying to break the game!")
+        #play(end_value)
 
 
-player1(end_value)
+restart()
